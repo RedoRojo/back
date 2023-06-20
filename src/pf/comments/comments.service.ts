@@ -58,8 +58,8 @@ export class CommentsService {
             
             
 
-            return this.commentRepository.update({id},createCommentDto)
-    
+            this.commentRepository.update({id},createCommentDto)
+            return commentFound
             
             // return this.UserRepository.save(UserFound)
         }

@@ -65,7 +65,8 @@ export class UsersService {
                 return new HttpException('User not found',HttpStatus.NOT_FOUND);
             }
     
-            return this.userRepository.update({id},createUserDto)
+            this.userRepository.update({id},createUserDto)
+            return userFound;
     
         }
     

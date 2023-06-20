@@ -69,9 +69,15 @@ export class PostsService {
                 return new HttpException('post not found',HttpStatus.NOT_FOUND);
             }
     
-            return this.postRepository.update({id},createPostDto)
+            this.postRepository.update({id},createPostDto)
+
+
+            
+
+            return postFound 
     
         }
+        
     
     
         async deletePost(id:number)
