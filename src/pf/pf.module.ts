@@ -9,10 +9,22 @@ import { PostsController } from './posts/posts.controller';
 import { PostsService } from './posts/posts.service';
 import { CommentsController } from './comments/comments.controller';
 import { CommentsService } from './comments/comments.service';
+import { AuthService } from './auth/auth.service';
+import { AuthController } from './auth/auth.controller';
+import { JwtModule } from '@nestjs/jwt/dist';
+import { jwtConstants } from './auth/constants';
+
 @Module({
-    imports:[TypeOrmModule.forFeature([User,Post,Comment])],
-    controllers: [UsersController, PostsController, CommentsController],
-    providers: [UsersService, PostsService, CommentsService]
+    imports:[
+        TypeOrmModule.forFeature([User,Post,Comment]),
+        JwtModule.register({
+            global: true,
+            secret: jwtConstants.secret,
+            signOptions: {expiresIn: '60s'}
+        })
+    ],
+    controllers: [UsersController, PostsController, CommentsController, AuthController],
+    providers: [UsersService, PostsService, CommentsService, AuthService]
 })
 export class PfModule {}
 

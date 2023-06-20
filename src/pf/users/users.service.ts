@@ -26,10 +26,25 @@ export class UsersService {
 
             if(!userFound)
             {
-                return new HttpException('post not found',HttpStatus.NOT_FOUND);
+                return new HttpException('user not found',HttpStatus.NOT_FOUND);
             }
 
             return userFound;   
+        }
+
+        async findOne(username: string): Promise<User | undefined> { 
+            
+            console.log(username);
+            const userFound =  this.userRepository.findOne({
+                where: {
+                    username: username
+                }
+            }); 
+
+            if(!userFound) {
+                throw new HttpException('user not found',HttpStatus.NOT_FOUND);
+            }
+            return userFound; 
         }
 
         create(createUserDto:CreateUserDto){
