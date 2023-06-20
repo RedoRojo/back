@@ -31,7 +31,7 @@ export class PostsController {
     }
 
     @Put(':id')
-    modifyUser(
+    modifyPost(
         @Param('id',ParseIntPipe) id:number,
         @Body() postModify:CreatePostDto
     )
@@ -39,7 +39,7 @@ export class PostsController {
         return this.postService.modifyPost(id,postModify);
     }
     @Delete(':id')
-    deleteUser(@Param('id',ParseIntPipe) id:number)
+    deletePost(@Param('id',ParseIntPipe) id:number)
     {
         return this.postService.deletePost(id);
     }
