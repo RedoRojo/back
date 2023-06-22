@@ -23,7 +23,7 @@ export class User {
     posts: Post[];
     
     @Column({type: 'varchar', length: 10, nullable: false})    
-    rol: RolName;
+    rol: String;
     // @OneToMany(()=>Dog, dog=>dog.raza)
     // dogs: Dog[]
 }
